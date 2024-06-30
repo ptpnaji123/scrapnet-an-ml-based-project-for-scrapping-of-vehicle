@@ -1,0 +1,24 @@
+{% extends 'scrapdealer_index.html'%}
+{% block body %}
+<body>
+    <form id="form1" name="form1" method="post" action="">
+        <table width="200" border="1">
+          <tr>
+            <th scope="col">S.NO</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">VEHICLE DETAILS </th>
+            <th scope="col">ACTION</th>
+          </tr>
+          {% for i in data %}
+          <tr>
+            <td>&nbsp;{{  loop.index }}</td>
+            <td>&nbsp;{{ i['fname'] }} {{ i['lname'] }}</td>
+            <td>&nbsp;{{ i['model']}}, <a href="static/rc/{{ i['rc'] }}">{{ i['rc'] }}</a>, <a href="static/fitness/{{ i['fitness'] }}">{{ i['fitness'] }}</a> </td>
+            <td>
+              <a href="gencert_add?rid={{ i['rid'] }}&sdid={{ i['sdid'] }}&uid={{ i['uid'] }}&vehicle={{ i['model'] }}">GENERATE</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </form>
+</body>
+{% endblock %}
